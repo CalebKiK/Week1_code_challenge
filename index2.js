@@ -8,7 +8,7 @@ function checkSpeed(speed) {
     if (speed <= speedLimit){
         console.log("Your speed is Ok");
     } else {
-        const excessSpeed = Math.ceil((speed - speedlimit) / kmPerDemeritPoint);
+        const excessSpeed = Math.ceil((speed - speedLimit) / kmPerDemeritPoint);
         demeritPoints = excessSpeed;
 
         if (demeritPoints > licenseSuspensionLimit){
@@ -18,7 +18,9 @@ function checkSpeed(speed) {
         }
     }
    
-}
+};
 
-checkSpeed();
+checkSpeed(69);
+checkSpeed(110);
+checkSpeed(140);
 

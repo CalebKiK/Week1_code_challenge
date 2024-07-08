@@ -1,22 +1,30 @@
-function calculateNetSalary() {
+// Function to calculate the gross salary
+function grossSalary(basicSalary, benefits){
+    return basicSalary + benefits;
+};
 
-    let grossSalary = basicSalary + benefits;
+// Function to calculate net salary and showcase the various deductions
+function calculateNetSalary(basicSalary, benefits) {
 
-    let payee = calculateTax(grossSalary);
-    
-    let nhifDeductions = calculateNHIF(grossSalary);
-    
-    let nssfDeductions = calculateNSSF(grossSalary);
-    
-    let netSalary = grossSalary - payee - nhifDeductions - nssfDeductions;
+    let gross = grossSalary(basicSalary, benefits);
 
-    console.log (`Gross Salary: ${grossSalary}`);
-    console.log (`PAYEE : ${payee}`);
+    let payee = calculateTax(gross);
+    
+    let nhifDeductions = calculateNHIF(gross);
+    
+    let nssfDeductions = calculateNSSF(gross);
+    
+    let netSalary = gross - payee - nhifDeductions - nssfDeductions;
+
+    console.log (`Gross Salary: ${gross}`);
+    console.log (`PAYEE: ${payee}`);
     console.log (`NHIF Deductions: ${nhifDeductions}`);
     console.log (`NSSF Deductions: ${nssfDeductions}`);
     console.log (`Net Salary: ${netSalary}`);
-}
 
+};
+
+// Function calculating payee
 function calculateTax(grossSalary){
     if (grossSalary <= 24000 ){
         return grossSalary * 0.1;
@@ -29,8 +37,9 @@ function calculateTax(grossSalary){
     } else {
         return grossSalary * 0.35;
     }
-}
+};
 
+// Function calculating NHIF deduction based on gross salary
 function calculateNHIF(grossSalary){
     if (grossSalary <= 5999 ){
         return 150;
@@ -67,10 +76,12 @@ function calculateNHIF(grossSalary){
     } else {
         return 1700;
     }
-}
+};
 
+// Function calculating NHIF deduction based on gross salary
 function calculateNSSF(grossSalary){
     return Math.floor(grossSalary * 0.06);
-}
+};
 
-calculateNetSalary();
+
+calculateNetSalary(400000, 20000);
